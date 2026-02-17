@@ -210,8 +210,6 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-The API is available at **http://localhost:8000**. Interactive docs are at **http://localhost:8000/docs**.
-
 ### 3. Start the Frontend
 
 ```bash
@@ -223,8 +221,6 @@ npm install
 # Launch the development server
 npm run dev
 ```
-
-Open **http://localhost:5173** in your browser.
 
 ---
 
