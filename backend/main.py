@@ -14,9 +14,14 @@ from __future__ import annotations
 
 import logging
 import os
+from pathlib import Path
 
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+# Load .env file from the backend directory
+load_dotenv(Path(__file__).resolve().parent / ".env")
 
 from routers import upload, analysis, health
 
@@ -45,6 +50,9 @@ ALLOWED_ORIGINS = os.getenv(
     "ALLOWED_ORIGINS",
     "http://localhost:5173,http://localhost:3000",
 ).split(",")
+
+
+ALLOWED_ORIGINS = [o.strip() for o in ALLOWED_ORIGINS if o.strip()]
 
 app.add_middleware(
     CORSMiddleware,
