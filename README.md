@@ -275,7 +275,7 @@ The response is a JSON object containing `power_curve`, `time_series`, `statisti
 | **Backend**  | Python 3.12 · FastAPI 0.115 · Uvicorn · Pandas 2.2 · NumPy 1.26 · SciPy 1.14 · OpenOA 3.2      |
 | **Frontend** | React 18 · Vite 6 · Tailwind CSS v4 · shadcn/ui · Recharts 2.x · React Router 7 · Lucide Icons |
 | **Tooling**  | class-variance-authority · clsx · tailwind-merge                                               |
-| **Hosting**  | Render (backend) · Vercel (frontend)                                                           |
+| **Hosting**  | Railway (backend) · Vercel (frontend)                                                           |
 
 ---
 
