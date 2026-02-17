@@ -6,7 +6,7 @@
  * it can differ between local development and production.
  */
 
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API_BASE = import.meta.env.VITE_API_URL ;
 
 /**
  * Upload a SCADA CSV file and return the analysis results.
