@@ -39,9 +39,9 @@ All charts feature **MATLAB-style click-and-drag zoom**, CSV export, and rich in
 ```
 ┌──────────────────────────────────────────────────────────────┐
 │                        Frontend  (React 18 + Vite 6)         │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐                   │
-│  │UploadPage│  │ResultsPage│ │GuidePage │   ← React Router  │
-│  └────┬─────┘  └────┬─────┘  └──────────┘                   │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐                    │
+│  │UploadPage│  │ResultsPage│ │GuidePage │   ← React Router   │
+│  └────┬─────┘  └────┬─────┘  └──────────┘                    │
 │       │              │                                       │
 │       │   ┌──────────┴──────────────────────┐                │
 │       │   │ ResultsDashboard                │                │
@@ -59,7 +59,7 @@ All charts feature **MATLAB-style click-and-drag zoom**, CSV export, and rich in
 └──────────┬───────────────────────────────────────────────────┘
            │  REST / JSON
 ┌──────────▼───────────────────────────────────────────────────┐
-│                        Backend  (FastAPI + Uvicorn)           │
+│                        Backend  (FastAPI + Uvicorn)          │
 │  /api/v1/upload          → CSV validation + full analysis    │
 │  /api/v1/analyze-sample  → analysis on bundled sample data   │
 │  /api/v1/sample-data     → preview generated SCADA records   │
@@ -67,7 +67,7 @@ All charts feature **MATLAB-style click-and-drag zoom**, CSV export, and rich in
 │                                                              │
 │  Services: validation · analysis (OpenOA 3.2) · loss_analysis│
 │            sample_data                                       │
-│  Stack:    Python 3.12 · Pandas · NumPy · SciPy · OpenOA    │
+│  Stack:    Python 3.12 · Pandas · NumPy · SciPy · OpenOA     │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -189,8 +189,8 @@ The upload endpoint accepts a CSV file with the following columns. Column names 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/<your-org>/openoa-wind-energy-analyzer.git
-cd openoa-wind-energy-analyzer
+git clone https://github.com/Deepak1230987/OpenOA-Analyser.git
+cd OpenOA-Analyser
 ```
 
 ### 2. Start the Backend
@@ -269,38 +269,6 @@ curl -X POST http://localhost:8000/api/v1/upload \
 The response is a JSON object containing `power_curve`, `time_series`, `statistics`, `monthly`, `data_quality`, `losses`, `temperature`, `pitch_analysis`, `yaw_analysis`, `status_distribution`, and `wind_rose` sections.
 
 </details>
-
----
-
-## Deployment
-
-### Backend → Render
-
-1. Create a **New Web Service** on [Render](https://render.com).
-2. Configure:
-   | Setting | Value |
-   |---|---|
-   | **Root Directory** | `backend` |
-   | **Build Command** | `pip install -r requirements.txt` |
-   | **Start Command** | `uvicorn main:app --host 0.0.0.0 --port $PORT` |
-   | **Environment** | Python 3 |
-3. Add environment variable: `ALLOWED_ORIGINS` → your frontend URL.
-4. Deploy.
-
-### Frontend → Vercel
-
-1. Import the repository into [Vercel](https://vercel.com).
-2. Configure:
-   | Setting | Value |
-   |---|---|
-   | **Framework Preset** | Vite |
-   | **Root Directory** | `frontend` |
-   | **Build Command** | `npm run build` |
-   | **Output Directory** | `dist` |
-3. Add environment variable: `VITE_API_URL` → your Render backend URL.
-4. Deploy.
-
-> **Note:** Vercel injects `VITE_*` variables at **build time**. Redeploy after changing them.
 
 ---
 
